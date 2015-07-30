@@ -1,20 +1,12 @@
-<html>
-<head>
-<title>ReactOS Translation Tool - missing files</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-</head>
-<body>
-
 <?php
-$start = microtime(true);
+/* PROJECT:     ReactOS Translation Tool
+ * LICENSE:     GPL
+ * AUTHORS:     Adam Stachowicz <saibamenppl@gmail.com>
+ * AUTHOR URL:	http://it-maniak.pl/
+ */
 
-$ROSDir = 'H:\ReactOS\\';
-
-if (!file_exists($ROSDir))
-{
-    echo "ReactOS source path <b>$ROSDir</b> does not exist!";
-	exit;
-}
+include_once('header.php');
+require_once('config.php');
 
 //$directory1 = new RecursiveDirectoryIterator($ROSDir);
 
@@ -97,11 +89,5 @@ while($regex->valid())
 echo "<h2>All translation RC files for english: $allEnglish</h2>";
 echo "<h2>Missing translations files for your language ($lang): $missingFiles</h2>";
 
-$end = microtime(true);
-$creationTime = ($end - $start);
-printf("Page created in %.3f seconds.", $creationTime);
-
+include_once('footer.php');
 ?>
-
-</body>
-</html>
