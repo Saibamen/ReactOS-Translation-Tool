@@ -2,4 +2,4 @@
 Translation Tool for ReactOS
 
 Features:
-- find missing translation files
+- find missing translation RC files
