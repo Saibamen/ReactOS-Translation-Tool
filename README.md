@@ -1,5 +1,5 @@
-# ReactOS-Translation-Tool
-Translation Tool for ReactOS
+# ReactOS Translation Tool
+Translation Tool for ReactOS started by Adam Stachowicz (saibamenppl@gmail.com, http://it-maniak.pl/)
 
 Features:
-- find missing translation RC files
+- Find missing translation RC files

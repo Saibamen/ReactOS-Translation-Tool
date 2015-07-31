@@ -9,13 +9,17 @@ include_once('header.php');
 require_once('config.php');
 ?>
 
+<h1>ReactOS Translation Tool - Search missing RC files</h1>
+
+<div id="body">
+
 <center>
 Please type your language code. For example: pl for Polish, de for German<br/><br/>
 <form method="POST" action="index.php">
-<label for="lang">Language: </label><br/>
-<input type="text" id="lang" name="lang" required="required" autofocus="autofocus" maxlength="2"/>
+Language code:<br/>
+<input type="text" name="lang" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
 <br/><br/>
-<input type="submit" value="Search missing RC files"/>
+<input type="submit" value="Search"/>
 </form>
 </center>
 <br/>
@@ -23,7 +27,8 @@ Please type your language code. For example: pl for Polish, de for German<br/><b
 <?php
 if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 {
-	//$directory1 = new RecursiveDirectoryIterator($ROSDir);
+	// Search in source dir - only for test
+	// $directory1 = new RecursiveDirectoryIterator($ROSDir);
 
 	$directory1 = new RecursiveDirectoryIterator($ROSDir. "base\applications");
 	$directory2 = new RecursiveDirectoryIterator($ROSDir. "base\setup");
@@ -60,8 +65,6 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 	$lang = htmlspecialchars($_POST["lang"]);
 
 	$fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
-	// DEBUG
-	echo "Searching for $fileSearch<br/>";
 
 	$regex->rewind();
 
@@ -69,11 +72,6 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 	{
 		if (!$regex->isDot())
 		{
-			//echo 'Filename: ' . $regex->getFilename() . "<br/>";
-			//echo 'SubPathName: ' . $regex->getSubPathName() . "<br/>";
-			//echo 'PathInfo: ' . $regex->getPathInfo() . "<br/><br/>";
-			//echo 'Key:         ' . $regex->key() . "<br/>";
-
 			$files = glob($regex->getPathInfo() . "\*{". $fileSearch ."}*.rc", GLOB_BRACE);
 			
 			$isFile = array_filter($files);
@@ -89,8 +87,8 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 		$regex->next();
 	}
 
-	echo "<h2>All translation RC files for english: $allEnglish</h2>";
-	echo "<h2>Missing translations files for your language ($lang): $missingFiles</h2>";
+	echo "<h3>All translation RC files for english: $allEnglish</h3>";
+	echo "<h3>Missing translations files for your language ($lang): $missingFiles</h3>";
 }
 
 include_once('footer.php');
