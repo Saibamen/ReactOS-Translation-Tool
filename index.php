@@ -11,17 +11,17 @@ require_once('config.php');
 
 <center>
 Please type your language code. For example: pl for Polish, de for German<br/><br/>
-<form action="index.php" method="POST">
-<label for="Language">Language: </label><br/>
-<input type="text" name="Lang" value="" required="required" autofocus="autofocus" maxlength="2"  />
+<form method="POST" action="index.php">
+<label for="lang">Language: </label><br/>
+<input type="text" id="lang" name="lang" required="required" autofocus="autofocus" maxlength="2"/>
 <br/><br/>
-<input type="submit" value="Search missing RC files"  />
+<input type="submit" value="Search missing RC files"/>
 </form>
 </center>
 <br/>
 
 <?php
-if (isset($_POST["Lang"]) && !empty($_POST["Lang"]))
+if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 {
 	//$directory1 = new RecursiveDirectoryIterator($ROSDir);
 
@@ -55,10 +55,9 @@ if (isset($_POST["Lang"]) && !empty($_POST["Lang"]))
 
 	$regex = new RegexIterator($it, '/^.+lang.+(US|En)\.rc$/i', RecursiveRegexIterator::GET_MATCH);
 
-	$allEnglish = 0;
-	$missingFiles = 0;
+	$allEnglish = $missingFiles = 0;
 
-	$lang = $_POST["Lang"];
+	$lang = htmlspecialchars($_POST["lang"]);
 
 	$fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
 	// DEBUG
@@ -74,7 +73,6 @@ if (isset($_POST["Lang"]) && !empty($_POST["Lang"]))
 			//echo 'SubPathName: ' . $regex->getSubPathName() . "<br/>";
 			//echo 'PathInfo: ' . $regex->getPathInfo() . "<br/><br/>";
 			//echo 'Key:         ' . $regex->key() . "<br/>";
-			
 
 			$files = glob($regex->getPathInfo() . "\*{". $fileSearch ."}*.rc", GLOB_BRACE);
 			
@@ -86,18 +84,8 @@ if (isset($_POST["Lang"]) && !empty($_POST["Lang"]))
 				$missingFiles++;
 			}
 			
-			/*$curr_dir = new RecursiveDirectoryIterator($regex->getPathInfo());
-			$it2 = new RecursiveIteratorIterator( $curr_dir );
-			$regex2 = new RegexIterator($it2, '/^.+(pl)\.rc$/i', RecursiveRegexIterator::GET_MATCH);
-			
-			while($regex2->valid()) {
-				if (!$regex2->isDot()) {
-					echo 'Keyyyyyyyyyy:         ' . $regex2->key() . "<br/>";
-				}
-			}*/
+			$allEnglish++;
 		}
-		
-		$allEnglish++;
 		$regex->next();
 	}
 
