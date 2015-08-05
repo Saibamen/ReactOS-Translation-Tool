@@ -77,5 +77,5 @@
 <div id="container">
 	
 <div id="menu">
-<a href="index.php">Home</a>
+<a href="index.php">Missing files</a> | <a href="diff.php">Missing strings</a> (Beta)
 </div>
