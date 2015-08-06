@@ -40,7 +40,8 @@ else
 	if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 	{
 		// Switch for directories
-		switch ($_GET["dir"]) {
+		switch ($_GET["dir"])
+		{
 			case "1":
 				$directory1 = new RecursiveDirectoryIterator($ROSDir. "base\applications");
 				$directory2 = new RecursiveDirectoryIterator($ROSDir. "base\setup");
@@ -100,15 +101,13 @@ else
 			// FIXME: exclude fonts strings
 			$pattern = "/^(?!FONT)[^\"]*\"(?!\s+\")([^\"\n]+)/m";
 
-			if (preg_match_all($pattern, $leftContent, $matches) <= 0) {
+			if (preg_match_all($pattern, $leftContent, $matches) <= 0)
 				throw new Exception('Left content has no version line.');
-			}
 
 			$leftVersion = $matches[1];
 
-			if (preg_match_all($pattern, $rightContent, $matches) <= 0) {
+			if (preg_match_all($pattern, $rightContent, $matches) <= 0)
 				throw new Exception('Right content has no version line.');
-			}
 
 			$rightVersion = $matches[1];
 
@@ -119,21 +118,19 @@ else
 			);
 		}
 
-		$regex = new RegexIterator($it, '/^.+lang.+(US|En)\.rc$/i', RecursiveRegexIterator::GET_MATCH);
+		$regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
 
 		$allEnglish = $missingFiles = $missing = 0;
 
 		$lang = htmlspecialchars($_POST["lang"]);
-
 		$fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);	
 
 		$regex->rewind();
-
 		while($regex->valid())
 		{
 			if (!$regex->isDot())
 			{
-				$file = glob($regex->getPathInfo() . "\*{". $fileSearch ."}*.rc", GLOB_BRACE);
+				$file = glob($regex->getPathInfo() ."\*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
 				
 				$isFile = array_filter($file);
 
