@@ -112,7 +112,7 @@ else
 			$rightVersion = $matches[1];
 
 			return array(
-				'diff' => $leftVersion == $rightVersion,
+				'diff' => array_intersect($leftVersion, $rightVersion),
 				'leftVersion' => $leftVersion,
 				'rightVersion' => $rightVersion,
 			);
@@ -146,7 +146,7 @@ else
 					
 					$array = diff_versions($fileContent1, $fileContent2);
 					
-					if (array_intersect($array['leftVersion'], $array['rightVersion']))
+					if ($array['diff'])
 					{
 						echo $regex->getPathInfo() .'<br><br>';
 						
