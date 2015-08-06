@@ -7,6 +7,10 @@ Features:
 - Find missing translation RC files
 - Find missing translation strings (WIP)
 
+Installation
+* Upload files to a web accessible directory on your server or hosting account
+* Change the ReactOS source dir ($ROSDir) in config.php
+
 TODO:
 - Fix pattern in diff.php to exclude some strings (FONT for example) and catch multiline strings
 - Remember last language code in input form (cookies)
