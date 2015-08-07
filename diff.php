@@ -99,7 +99,7 @@ else
 
 			// $pattern = '/(LTEXT|PUSHBUTTON|CAPTION|GROUPBOX|RTEXT|MENUITEM|[0-9]+|IDS_.+|STRING_.+) .*"(.+)".*\R?/';
 			// FIXME: exclude fonts strings
-			$pattern = "/^(?!FONT)[^\"]*\"(?!\\s+\")([^\"\\n]+)/m";
+			$pattern = "/^(?!FONT)[^\"]*\"\\K(?!\\s+\")([^\"\\n]+)/m";
 
 			if (preg_match_all($pattern, $leftContent, $matches) <= 0)
 				throw new Exception('Left content has no version line.');
