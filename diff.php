@@ -99,7 +99,7 @@ else
 
 			// $pattern = '/(LTEXT|PUSHBUTTON|CAPTION|GROUPBOX|RTEXT|MENUITEM|[0-9]+|IDS_.+|STRING_.+) .*"(.+)".*\R?/';
 			// FIXME: exclude fonts strings
-			$pattern = "/^(?!FONT)[^\"]*\"(?!\s+\")([^\"\n]+)/m";
+			$pattern = "/^(?!FONT)[^\"]*\"(?!\\s+\")([^\"\\n]+)/m";
 
 			if (preg_match_all($pattern, $leftContent, $matches) <= 0)
 				throw new Exception('Left content has no version line.');
@@ -152,10 +152,11 @@ else
 						
 						foreach ($array['leftVersion'] as $index => $english)
 						{
-							if ($english === $array['rightVersion'][$index])
+							// Check if this same and ignore some words
+							if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoreString))
 							{
 								echo "<b>Missing translation: </b>";
-								echo $english ." <br>";
+								echo $english ."<br>";
 								$missing++;
 							}
 						}
