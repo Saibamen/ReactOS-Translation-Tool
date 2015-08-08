@@ -20,9 +20,14 @@ if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
 {
 	echo '<center>
 	<b>Select directories:</b><br><br>
-	<b><a href="?dir=1">Dir pack 1</a>:</b> base, boot<br>
-	<b><a href="?dir=2">Dir pack 2</a>:</b> dll<br>
-	<b><a href="?dir=3">Dir pack 3</a>:</b> media, subsystems, win32ss';
+		<form method="GET" action="diff.php">
+		<select name="dir">
+			<option value="1">base, boot</option> 
+			<option value="2">dll</option>
+			<option value="3">media, subsystems, win32ss</option>
+		</select>
+		<input type="submit" value="Go"/>
+	</form>';
 }
 else
 {
