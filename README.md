@@ -12,7 +12,6 @@ Installation
 * Change the ReactOS source dir ($ROSDir) in config.php
 
 TODO:
-- Fix pattern in diff.php to exclude some strings (FONT for example) and catch multiline strings
+- Fix pattern in diff.php to catch multiline strings with ""some text""
 - Remember last language code in input form (cookies)
 - Switch language code from POST to GET?? (good for linking)
-- Make a ignore strings list (OK, Proxy)

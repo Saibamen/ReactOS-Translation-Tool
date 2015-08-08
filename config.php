@@ -12,7 +12,7 @@ $originLang = 'US|En';
 $fileExt = 'rc';
 
 // Ignore string list
-$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC');
+$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup');
 
 if (!file_exists($ROSDir))
 {
