@@ -17,9 +17,9 @@ include_once('header.php');
 <form method="POST" class="form-horizontal">
 <fieldset>
 	<div class="form-group">
-		<label class="col-md-4 control-label" for="Nazwa">Language code:</label>
+		<label class="col-md-4 control-label" for="lang">Language code:</label>
 		<div class="col-md-4">
-			<input type="text" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+			<input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
 		</div>
 	</div>
 	<button type="submit" class="btn btn-primary">Search</button>

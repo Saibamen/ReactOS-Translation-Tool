@@ -23,9 +23,9 @@ if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
 	<fieldset>
 	<legend>Select directories:</legend>
 	<div class="form-group">
-		<label class="col-md-4 control-label" for="selectbasic">Directories:</label>
+		<label class="col-md-4 control-label" for="dir">Directories:</label>
 		<div class="col-md-4">
-		<select name="dir" class="form-control">
+		<select id="dir" name="dir" class="form-control">
 			<option value="1">base, boot</option> 
 			<option value="2">dll</option>
 			<option value="3">media, subsystems, win32ss</option>
@@ -34,18 +34,19 @@ if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
 	</div>
 	<button type="submit" class="btn btn-primary">Go</button>
 	</fieldset>
-	</form>';
+	</form>
+	</center>';
 }
 else
 {
 	echo '<center>
-	<legend>Please type your language code. For example: pl for Polish, de for German</legend>
 	<form method="POST" action="diff.php?dir='. $_GET["dir"] .'" class="form-horizontal">
 	<fieldset>
+	<legend>Please type your language code. For example: pl for Polish, de for German</legend>
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="Nazwa">Language code:</label>
+			<label class="col-md-4 control-label" for="lang">Language code:</label>
 			<div class="col-md-4">
-				<input type="text" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+				<input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Search</button>
