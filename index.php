@@ -7,18 +7,23 @@
 include_once('header.php');
 ?>
 
-<h1>ReactOS Translation Tool - Search missing RC files</h1>
+<h1>Search missing RC files</h1>
 
 <div id="body">
 <?php require_once('config.php'); ?>
 
 <center>
-Please type your language code. For example: pl for Polish, de for German<br/><br/>
-<form method="POST" action="index.php">
-	Language code:<br/>
-	<input type="text" name="lang" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
-	<br/><br/>
-	<input type="submit" value="Search"/>
+<legend>Please type your language code. For example: pl for Polish, de for German</legend>
+<form method="POST" class="form-horizontal">
+<fieldset>
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="Nazwa">Language code:</label>
+		<div class="col-md-4">
+			<input type="text" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+		</div>
+	</div>
+	<button type="submit" class="btn btn-primary">Search</button>
+</fieldset>
 </form>
 </center>
 <br/>

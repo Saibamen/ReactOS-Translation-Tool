@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>ReactOS Translation Tool</title>
 	<meta charset="utf-8">
+	<title>ReactOS Translation Tool</title>
+	<link rel="shortcut icon" href="https://reactos.org/sites/all/themes/zen_reactos/favicon.ico" type="image/vnd.microsoft.icon">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script src="js/bootstrap.min.js"></script>
+	
 	<style type="text/css">
 	body {
 		background-color:#fff;
@@ -65,17 +71,34 @@
 		text-decoration:none;
 	}
 
-	#container {
+	.contt {
 		border:1px solid #D0D0D0;
 		box-shadow:0 0 8px #D0D0D0;
-		margin:10px;
+		margin-top:65px;
 	}
 	</style>
 </head>
 <body>
 <?php $start = microtime(true); ?>
-<div id="container">
-	
-<div id="menu">
-<a href="index.php">Missing files</a> | <a href="diff.php">Missing strings</a> (Beta)
-</div>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+	  <div class="navbar-header">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="index.php">ReactOS Translation Tool</a>
+	  </div>
+	  <div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+		  <li><a href="index.php">Missing files</a></li>
+		  <li><a href="diff.php">Missing strings (Beta)</a></li>
+		</ul>
+	  </div>
+	</div>
+</nav>
+
+<div class="container contt theme-showcase" role="main">

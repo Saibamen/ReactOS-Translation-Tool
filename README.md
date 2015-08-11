@@ -5,19 +5,19 @@ Homepage: https://reactos.org/
 
 Started by Adam Stachowicz (saibamenppl@gmail.com, http://it-maniak.pl/)
 
-Features:
+Features
 ----------
 
 - Find missing translation RC files
 - Find missing translation strings (**WIP**)
 
-Installation:
+Installation
 ----------
 
 * Upload files to a web accessible directory on your server or hosting account
 * Change the ReactOS source dir ($ROSDir) in config.php
 
-TODO:
+TODO
 ----------
 
 - Fix pattern in diff.php to catch multiline strings with ""some text""

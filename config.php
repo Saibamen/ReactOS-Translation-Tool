@@ -1,6 +1,6 @@
 <?php
 // ReactOS Source directory
-$ROSDir = 'H:\ReactOS\\';
+$ROSDir = 'E:\ReactOS\\';
 
 // Translations folder
 $langDir = 'lang';
@@ -12,7 +12,7 @@ $originLang = 'US|En';
 $fileExt = 'rc';
 
 // Ignore string list
-$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup');
+$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup', 'http://www.reactos.org');
 
 if (!file_exists($ROSDir))
 {
