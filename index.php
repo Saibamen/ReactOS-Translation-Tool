@@ -15,10 +15,10 @@ include_once('header.php');
 <center>
 Please type your language code. For example: pl for Polish, de for German<br/><br/>
 <form method="POST" action="index.php">
-Language code:<br/>
-<input type="text" name="lang" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
-<br/><br/>
-<input type="submit" value="Search"/>
+	Language code:<br/>
+	<input type="text" name="lang" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+	<br/><br/>
+	<input type="submit" value="Search"/>
 </form>
 </center>
 <br/>
