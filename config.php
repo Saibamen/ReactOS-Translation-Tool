@@ -12,7 +12,7 @@ $originLang = 'US|En';
 $fileExt = 'rc';
 
 // Ignore string list
-$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup', 'http://www.reactos.org', 'DUMMY', 'Tab1', 'List1', 'List2', 'List3', 'Slider1', 'Text1', 'Text2', 'Text3');
+$ignoreString = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup', 'http://www.reactos.org', 'DUMMY', 'Tab1', 'List1', 'List2', 'List3', 'Slider1', 'Text1', 'Text2', 'Text3', '?', '/', '...');
 
 // Maximize the default PHP time limit to 60 seconds
 set_time_limit(60);

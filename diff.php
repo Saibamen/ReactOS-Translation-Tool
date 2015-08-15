@@ -115,7 +115,7 @@ else
             $leftVersion = $rightVersion = null;
 
             // FIXME: Search multi-line with ""some text""
-            $pattern = "/^(?!FONT|\s*\*)[^\"\\n]*\"\\K(?!\\s+\")([^\"]+)/m";
+            $pattern = "/^(?!FONT|\\s*\\*)[^\"\\n]*\"\\K(?!\\s*(?:\"|\\n))([^\"]+)/m";
 
             if (preg_match_all($pattern, $leftContent, $matches) <= 0)
             {
@@ -140,7 +140,7 @@ else
 
         $regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
 
-        $allEnglish = $missingFiles = $missing = $allStrings = 0;
+        $missing = $allStrings = 0;
 
         $lang = htmlspecialchars($_POST["lang"]);
         $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);	
@@ -157,7 +157,6 @@ else
                 if (empty($isFile))
                 {
                     echo '<b>No translation</b> for path '. $regex->getPathInfo() .'<hr>';
-                    $missingFiles++;
                 }
                 else
                 {
@@ -179,20 +178,19 @@ else
                                 echo $english ."<br>";
                                 $missing++;
                             }
-                            $allStrings++;
+                            else
+                            {
+                                $allStrings++;
+                            }
                         }
                         echo "<hr>";
                     }
                 }
-                $allEnglish++;
             }
             $regex->next();
         }
-
-        echo "<h3>All translation RC files for english: $allEnglish</h3>";
-        echo "<h3>Missing translation files for your language ($lang): $missingFiles</h3>";
         echo "<h3>All strings for english: $allStrings</h3>";
-        echo "<h3>Missing translations: $missing</h3>";
+        echo "<h3>Missing translations for your language ($lang): $missing</h3>";
     }
 }
 
