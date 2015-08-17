@@ -172,16 +172,13 @@ else
                         foreach ($array['leftVersion'] as $index => $english)
                         {
                             // Check if this same and ignore some words
-                            if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoreString))
+                            if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
                             {
                                 echo "<b>Missing translation: </b>";
                                 echo $english ."<br>";
                                 $missing++;
                             }
-                            else
-                            {
-                                $allStrings++;
-                            }
+                            $allStrings++;
                         }
                         echo "<hr>";
                     }
@@ -191,6 +188,10 @@ else
         }
         echo "<h3>All strings for english: $allStrings</h3>";
         echo "<h3>Missing translations for your language ($lang): $missing</h3>";
+		
+		// Rounded percent
+		$percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
+		echo "<h3>Language $lang translated in $percent%</h3>";
     }
 }
 
