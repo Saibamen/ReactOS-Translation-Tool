@@ -8,7 +8,7 @@
 include_once('header.php');
 ?>
 
-<h1>Search missing translation strings</h1>
+<h1>Search for wrong encoded files (UTF-8 BOM)</h1>
 
 <div id="body">
 
@@ -109,46 +109,13 @@ else
                 exit;
         }
 
-        function diff_versions($leftContent, $rightContent)
-        {
-            $diff = true;
-            $leftVersion = $rightVersion = null;
-
-            // FIXME: Search multi-line with ""some text""
-            $pattern = "/^(?!FONT|\\s*\\*)[^\"\\n]*\"\\K(?!\\s*(?:\"|\\n))([^\"]+)/m";
-
-            if (preg_match_all($pattern, $leftContent, $matches) <= 0)
-            {
-                throw new Exception('Left content has no version line.');
-            }
-
-            $leftVersion = $matches[1];
-
-            if (preg_match_all($pattern, $rightContent, $matches) <= 0)
-            {
-                throw new Exception('Right content has no version line.');
-            }
-
-            $rightVersion = $matches[1];
-
-            return array(
-                'diff' => array_intersect($leftVersion, $rightVersion),
-                'leftVersion' => $leftVersion,
-                'rightVersion' => $rightVersion,
-            );
-        }
-
         $regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
 
-        $missing = $allStrings = 0;
+        $allWrongEnc = 0;
 
         $lang = htmlspecialchars($_POST["lang"]);
         // Search for eg. PL,Pl,pl
         $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
-        
-        // ReactOS and Wine Strings - array
-        $ignoredROSStrings = file($ROSSpellFilename, FILE_IGNORE_NEW_LINES);
-        $ignoredWineStrings = file($wineSpellFilename, FILE_IGNORE_NEW_LINES);
         
         // UTF-8 BOM starts with EF BB BF
         define ('UTF8_BOM', chr(0xEF) . chr(0xBB) . chr(0xBF));
@@ -170,17 +137,13 @@ else
                     if ($first3 === UTF8_BOM)
                     {
                         echo 'Detected <b>UTF-8 BOM</b> in '. $file[0] .'<br>';
+                        $allWrongEnc++;
                     }
                 }
             }
             $regex->next();
         }
-        echo "<h3>All strings for english: $allStrings</h3>";
-        echo "<h3>Missing translations for your language ($lang): $missing</h3>";
-        
-        // Rounded percent
-        $percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
-        echo "<h3>Language $lang translated in $percent%</h3>";
+        echo "<h3>All files with wrong encoding: $allWrongEnc</h3>";
     }
 }
 
