@@ -1,6 +1,12 @@
 <?php
 // ReactOS Source directory - must contain the base and dll directories
-$ROSDir = 'E:/ReactOS/';
+$ROSDir = 'E:/ReactOS';
+
+// If last character is not / - add it
+if (substr($ROSDir, -1) !== '/')
+{
+    $ROSDir .= '/';
+}
 
 // Translations folder
 $langDir = 'lang';
