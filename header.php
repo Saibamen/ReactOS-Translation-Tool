@@ -96,6 +96,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.php">Missing files</a></li>
                 <li><a href="diff.php">Missing strings (Beta)</a></li>
+                <li><a href="encoding.php">Check encoding (Beta)</a></li>
             </ul>
         </div>
     </div>
