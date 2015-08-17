@@ -143,7 +143,10 @@ else
         $missing = $allStrings = 0;
 
         $lang = htmlspecialchars($_POST["lang"]);
-        $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);	
+        $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
+        
+        // Wine Strings - array
+        $ignoredWineStrings = file($wineSpellFilename, FILE_IGNORE_NEW_LINES);
 
         $regex->rewind();
         while($regex->valid())
@@ -188,10 +191,10 @@ else
         }
         echo "<h3>All strings for english: $allStrings</h3>";
         echo "<h3>Missing translations for your language ($lang): $missing</h3>";
-		
-		// Rounded percent
-		$percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
-		echo "<h3>Language $lang translated in $percent%</h3>";
+        
+        // Rounded percent
+        $percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
+        echo "<h3>Language $lang translated in $percent%</h3>";
     }
 }
 
