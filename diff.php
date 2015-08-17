@@ -42,7 +42,7 @@ else
     echo '<center>
     <form method="POST" action="diff.php?dir='. $_GET["dir"] .'" class="form-horizontal">
     <fieldset>
-    <legend>Please type your language code. For example: pl for Polish, de for German</legend>
+    <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
         <div class="form-group">
             <label class="col-md-4 control-label" for="lang">Language code:</label>
             <div class="col-md-4">
@@ -61,11 +61,11 @@ else
         switch ($_GET["dir"])
         {
             case "1":
-                $directory1 = new RecursiveDirectoryIterator($ROSDir. "base\applications");
-                $directory2 = new RecursiveDirectoryIterator($ROSDir. "base\setup");
-                $directory3 = new RecursiveDirectoryIterator($ROSDir. "base\shell");
-                $directory4 = new RecursiveDirectoryIterator($ROSDir. "base\system");
-                $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot\\freeldr\\fdebug");
+                $directory1 = new RecursiveDirectoryIterator($ROSDir. "base/applications");
+                $directory2 = new RecursiveDirectoryIterator($ROSDir. "base/setup");
+                $directory3 = new RecursiveDirectoryIterator($ROSDir. "base/shell");
+                $directory4 = new RecursiveDirectoryIterator($ROSDir. "base/system");
+                $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot/freeldr/fdebug");
 
                 $it = new AppendIterator();
                 $it->append(new RecursiveIteratorIterator( $directory1 ));
@@ -76,9 +76,9 @@ else
                 break;
 
             case "2":
-                $directory6 = new RecursiveDirectoryIterator($ROSDir. "dll\cpl");
-                $directory7 = new RecursiveDirectoryIterator($ROSDir. "dll\shellext");
-                $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll\win32");
+                $directory6 = new RecursiveDirectoryIterator($ROSDir. "dll/cpl");
+                $directory7 = new RecursiveDirectoryIterator($ROSDir. "dll/shellext");
+                $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll/win32");
 
                 $it = new AppendIterator();
                 $it->append(new RecursiveIteratorIterator( $directory6 ));
@@ -87,9 +87,9 @@ else
                 break;
 
             case "3":
-                $directory9 = new RecursiveDirectoryIterator($ROSDir. "media\\themes");
-                $directory10 = new RecursiveDirectoryIterator($ROSDir. "subsystems\mvdm\\ntvdm");
-                $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss\user");
+                $directory9 = new RecursiveDirectoryIterator($ROSDir. "media/themes");
+                $directory10 = new RecursiveDirectoryIterator($ROSDir. "subsystems/mvdm/ntvdm");
+                $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss/user");
 
                 $it = new AppendIterator();
                 $it->append(new RecursiveIteratorIterator( $directory9 ));
@@ -143,6 +143,7 @@ else
         $missing = $allStrings = 0;
 
         $lang = htmlspecialchars($_POST["lang"]);
+        // Search for eg. PL,Pl,pl
         $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
         
         // ReactOS and Wine Strings - array

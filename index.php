@@ -13,37 +13,37 @@ include_once('header.php');
 <?php require_once('config.php'); ?>
 
 <center>
-<legend>Please type your language code. For example: pl for Polish, de for German</legend>
-<form method="POST" class="form-horizontal">
-<fieldset>
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="lang">Language code:</label>
-        <div class="col-md-4">
-            <input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-</fieldset>
-</form>
+    <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
+    <form method="POST" class="form-horizontal">
+        <fieldset>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lang">Language code:</label>
+                <div class="col-md-4">
+                    <input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </fieldset>
+    </form>
 </center>
 <br/>
 
 <?php
 if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 {
-    $directory1 = new RecursiveDirectoryIterator($ROSDir. "base\applications");
-    $directory2 = new RecursiveDirectoryIterator($ROSDir. "base\setup");
-    $directory3 = new RecursiveDirectoryIterator($ROSDir. "base\shell");
-    $directory4 = new RecursiveDirectoryIterator($ROSDir. "base\system");
-    $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot\\freeldr\\fdebug");
+    $directory1 = new RecursiveDirectoryIterator($ROSDir. "base/applications");
+    $directory2 = new RecursiveDirectoryIterator($ROSDir. "base/setup");
+    $directory3 = new RecursiveDirectoryIterator($ROSDir. "base/shell");
+    $directory4 = new RecursiveDirectoryIterator($ROSDir. "base/system");
+    $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot/freeldr/fdebug");
 
-    $directory6 = new RecursiveDirectoryIterator($ROSDir. "dll\cpl");
-    $directory7 = new RecursiveDirectoryIterator($ROSDir. "dll\shellext");
-    $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll\win32");
+    $directory6 = new RecursiveDirectoryIterator($ROSDir. "dll/cpl");
+    $directory7 = new RecursiveDirectoryIterator($ROSDir. "dll/shellext");
+    $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll/win32");
 
-    $directory9 = new RecursiveDirectoryIterator($ROSDir. "media\\themes");
-    $directory10 = new RecursiveDirectoryIterator($ROSDir. "subsystems\mvdm\\ntvdm");
-    $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss\user");
+    $directory9 = new RecursiveDirectoryIterator($ROSDir. "media/themes");
+    $directory10 = new RecursiveDirectoryIterator($ROSDir. "subsystems/mvdm/ntvdm");
+    $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss/user");
     // Search in source dir - only for test
     // $directory100 = new RecursiveDirectoryIterator($ROSDir);
 
@@ -67,6 +67,7 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
     $allEnglish = $missingFiles = 0;
 
     $lang = htmlspecialchars($_POST["lang"]);
+    // Search for eg. PL,Pl,pl
     $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
 
     $regex->rewind();

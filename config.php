@@ -1,6 +1,6 @@
 <?php
-// ReactOS Source directory
-$ROSDir = 'E:\ReactOS\\';
+// ReactOS Source directory - must contain the base and dll directories
+$ROSDir = 'E:/ReactOS/';
 
 // Translations folder
 $langDir = 'lang';

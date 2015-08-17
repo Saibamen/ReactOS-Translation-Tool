@@ -15,7 +15,7 @@ Installation
 ----------
 
 * Upload files to a web accessible directory on your server or hosting account
-* Change the ReactOS source dir ($ROSDir) in config.php
+* Change the ReactOS source dir ($ROSDir) in config.php - must contain the base and dll directories
 
 TODO
 ----------
