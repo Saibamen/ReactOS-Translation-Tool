@@ -10,6 +10,7 @@ Features
 
 - Find missing translation RC files
 - Find missing translation strings (**WIP**)
+- Find wrong encoded files
 
 Installation
 ----------

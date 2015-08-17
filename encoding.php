@@ -8,7 +8,7 @@
 include_once('header.php');
 ?>
 
-<h1>Search for wrong encoded files (UTF-8 BOM)</h1>
+<h1>Search for wrong encoded files</h1>
 
 <div id="body">
 
@@ -133,11 +133,20 @@ else
                 if (!empty($isFile))
                 {
                     $text = file_get_contents($file[0]);
-                    $first3 = substr($text, 0, 3);
                     
-                    if ($first3 === UTF8_BOM)
+                    if (mb_check_encoding($text, 'UTF-8'))
                     {
-                        echo 'Detected <b>UTF-8 BOM</b> in '. $file[0] .'<br>';
+                        $first3 = substr($text, 0, 3);
+                        
+                        if ($first3 === UTF8_BOM)
+                        {
+                            echo 'Detected <b>UTF-8 BOM</b> in '. $file[0] .'<br>';
+                            $allWrongEnc++;
+                        }
+                    }
+                    else
+                    {
+                        echo 'Detected <b>other encoding</b> in '. $file[0] .'<br>';
                         $allWrongEnc++;
                     }
                 }
