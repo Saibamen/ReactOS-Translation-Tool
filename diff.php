@@ -145,7 +145,8 @@ else
         $lang = htmlspecialchars($_POST["lang"]);
         $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
         
-        // Wine Strings - array
+        // ReactOS and Wine Strings - array
+        $ignoredROSStrings = file($ROSSpellFilename, FILE_IGNORE_NEW_LINES);
         $ignoredWineStrings = file($wineSpellFilename, FILE_IGNORE_NEW_LINES);
 
         $regex->rewind();

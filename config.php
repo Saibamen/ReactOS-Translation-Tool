@@ -12,10 +12,10 @@ $originLang = 'US|En';
 $fileExt = 'rc';
 
 // Ignored ROS strings list
-$ignoredROSStrings = array('OK', 'Ok', '&OK', '[OK]\n', 'ReactOS', 'MS Shell Dlg', 'Arial', 'Static', 'STATIC', 'popup', 'http://www.reactos.org', 'DUMMY', 'Tab1', 'List1', 'List2', 'List3', 'Slider1', 'Text1', 'Text2', 'Text3', '?', '/', '...');
+$ROSSpellFilename = 'ReactOS.spell';
 
 // Ignored Wine strings list (from http://fgouget.free.fr/wine-po/generic.spell.ignore)
-$wineSpellFilename = 'wine.spell.ignore';
+$wineSpellFilename = 'Wine.spell';
 
 // Maximize the default PHP time limit to 60 seconds
 set_time_limit(60);
