@@ -13,6 +13,7 @@ DUMMY
 Tab1
 List1
 List2
+LIST2
 List3
 Slider1
 Text1
@@ -21,3 +22,36 @@ Text3
 ?
 /
 ...
+*.reg
+*.*
+ROS
+BIOS:
+fdebug
+FDEBUG
+test.txt
+Progress1
+000.000.000
+000.000.000.000
+%1 (%2\\%3)
+%1
+&URL:
+lnk\0
+*.rnk\0
+%1\n\n%4\0
+netcfg.hlp\0
+%d%%\0
+OK\0
+pbk\0
+*.pbk\0
+scp\0
+*.scp\0
+X.25\0
+12\0
+log\0
+*.log\0
+ \0
+%s (%s)\0
+127.0.0.1\0
+ (
+)
+X - X X X - X X X - X X X X
