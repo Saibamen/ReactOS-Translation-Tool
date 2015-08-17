@@ -29,6 +29,7 @@ if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
                 <option value="1">base, boot</option> 
                 <option value="2">dll</option>
                 <option value="3">media, subsystems, win32ss</option>
+                <option value="100">All ReactOS Source dir</option>
             </select>
             </div>
 	</div>
