@@ -116,7 +116,7 @@ else
             $leftVersion = $rightVersion = null;
 
             // FIXME: Search multi-line with ""some text""
-            $pattern = "/^(?!FONT|\\s*\\*)[^\"\\n]*\"\\K(?!\\s*(?:\"|\\n))([^\"]+)/m";
+            $pattern = "/^(?!FONT|\\s*\\*|\\#\\include|\\s*\\ICON)[^\"\\n]*\"\\K(?!\\s*(?:\"|\\n))([^\"]+)/m";
 
             if (preg_match_all($pattern, $leftContent, $matches) <= 0)
             {
