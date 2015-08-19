@@ -126,7 +126,7 @@ else
         {
             if (!$regex->isDot())
             {
-                $file = glob($regex->getPathInfo() ."\*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
+                $file = glob($regex->getPathInfo() ."/*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
 
                 $isFile = array_filter($file);
 

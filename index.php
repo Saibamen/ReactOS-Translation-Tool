@@ -75,7 +75,7 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
     {
         if (!$regex->isDot())
         {
-            $file = glob($regex->getPathInfo() ."\*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
+            $file = glob($regex->getPathInfo() ."/*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
 
             $isFile = array_filter($file);
             if (empty($isFile))
