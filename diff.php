@@ -139,6 +139,20 @@ else
             );
         }
 
+        function exceptions_error_handler($severity, $message, $filename, $lineno)
+        {
+            if (error_reporting() == 0)
+            {
+                return;
+            }
+            if (error_reporting() & $severity)
+            {
+                throw new ErrorException($message, 0, $severity, $filename, $lineno);
+            }
+        }
+        
+        set_error_handler('exceptions_error_handler');
+        
         $regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
 
         $missing = $allStrings = 0;
@@ -177,14 +191,23 @@ else
 
                         foreach ($array['leftVersion'] as $index => $english)
                         {
-                            // Check if this same and ignore some words
-                            if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
+                            // Catch offset error
+                            try
                             {
-                                echo "<b>Missing translation: </b>";
-                                echo $english ."<br>";
+                                // Check if this same and ignore some words
+                                if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
+                                {
+                                    echo "<b>Missing translation:</b> ". $english ."<br>";
+                                    $missing++;
+                                }
+                                $allStrings++;
+                            }
+                            catch (Exception $e)
+                            {
+                                echo "Missing stuff in your language<br>";
+                                $allStrings++;
                                 $missing++;
                             }
-                            $allStrings++;
                         }
                         echo "<hr>";
                     }
