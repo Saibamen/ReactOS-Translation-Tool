@@ -188,6 +188,8 @@ else
                     if ($array['diff'])
                     {
                         echo $regex->getPathInfo() .'<br><br>';
+                        
+                        $currentMissing = $missing;
 
                         foreach ($array['leftVersion'] as $index => $english)
                         {
@@ -209,6 +211,9 @@ else
                                 $missing++;
                             }
                         }
+                        if ($currentMissing == $missing)
+                                echo "Seems OK :) Some strings was ignored by ReactOS and Wine spell files.<br>";
+
                         echo "<hr>";
                     }
                 }
