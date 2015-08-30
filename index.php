@@ -19,7 +19,7 @@ include_once('header.php');
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lang">Language code:</label>
                 <div class="col-md-4">
-                    <input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Search</button>

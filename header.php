@@ -1,3 +1,9 @@
+<?php session_start();
+if (isset($_POST["lang"]) && !empty($_POST["lang"]))
+{
+    $_SESSION['lang'] = $_POST["lang"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

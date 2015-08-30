@@ -39,23 +39,24 @@ if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
 	</center>';
 }
 else
-{
-    echo '<center>
-    <form method="POST" action="diff.php?dir='. $_GET["dir"] .'" class="form-horizontal">
+{?>
+    <center>
+    <form method="POST" action="diff.php?dir=<?php echo $_GET["dir"] ?>" class="form-horizontal">
     <fieldset>
     <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
         <div class="form-group">
             <label class="col-md-4 control-label" for="lang">Language code:</label>
             <div class="col-md-4">
-                <input type="text" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </fieldset>
     </form>
     </center>
-    <br/>';
+    <br/>
 
+    <?php
     if (isset($_POST["lang"]) && !empty($_POST["lang"]))
     {
         // Switch for directories
