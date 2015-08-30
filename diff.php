@@ -200,7 +200,7 @@ else
                                 // Check if this same and ignore some words
                                 if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
                                 {
-                                    echo "<b>Missing translation:</b> ". $english ."<br>";
+                                    echo "<b>Missing translation:</b> ". htmlspecialchars($english) ."<br>";
                                     $missing++;
                                 }
                                 $allStrings++;
