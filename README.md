@@ -21,5 +21,4 @@ Installation
 TODO
 ----------
 
-- Fix pattern in diff.php to catch multiline strings with ""some text"" (part 1/2)
-- Switch language code from POST to GET?? (good for linking)
+- Fix pattern in diff.php to catch multiline strings with ""some text"" (part 1/2 - FIXED?)

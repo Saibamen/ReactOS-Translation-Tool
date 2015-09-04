@@ -14,7 +14,7 @@ include_once('header.php');
 
 <center>
     <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
-    <form method="POST" class="form-horizontal">
+    <form method="GET" class="form-horizontal">
         <fieldset>
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lang">Language code:</label>
@@ -29,7 +29,7 @@ include_once('header.php');
 <br/>
 
 <?php
-if (isset($_POST["lang"]) && !empty($_POST["lang"]))
+if (isset($_GET["lang"]) && !empty($_GET["lang"]))
 {
     $directory1 = new RecursiveDirectoryIterator($ROSDir. "base/applications");
     $directory2 = new RecursiveDirectoryIterator($ROSDir. "base/setup");
@@ -66,7 +66,7 @@ if (isset($_POST["lang"]) && !empty($_POST["lang"]))
 
     $allEnglish = $missingFiles = 0;
 
-    $lang = htmlspecialchars($_POST["lang"]);
+    $lang = htmlspecialchars($_GET["lang"]);
     // Search for eg. PL,Pl,pl
     $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
 

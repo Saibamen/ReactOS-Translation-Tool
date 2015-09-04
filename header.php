@@ -1,7 +1,7 @@
 <?php session_start();
-if (isset($_POST["lang"]) && !empty($_POST["lang"]))
+if (isset($_GET["lang"]) && !empty($_GET["lang"]))
 {
-    $_SESSION['lang'] = $_POST["lang"];
+    $_SESSION['lang'] = $_GET["lang"];
 }
 ?>
 <!DOCTYPE html>

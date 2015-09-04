@@ -15,33 +15,10 @@ include_once('header.php');
 <?php
 
 require_once('config.php');
+?>
 
-if (!(isset($_GET["dir"]) && is_numeric($_GET["dir"])))
-{
-	echo '<center>
-	<form method="GET" class="form-horizontal">
-	<fieldset>
-	<legend>Select directories:</legend>
-	<div class="form-group">
-            <label class="col-md-4 control-label" for="dir">Directories:</label>
-            <div class="col-md-4">
-            <select id="dir" name="dir" class="form-control">
-                <option value="1">base, boot</option> 
-                <option value="2">dll</option>
-                <option value="3">media, subsystems, win32ss</option>
-                <option value="100">All ReactOS Source dir</option>
-            </select>
-            </div>
-	</div>
-	<button type="submit" class="btn btn-primary">Go</button>
-	</fieldset>
-	</form>
-	</center>';
-}
-else
-{?>
     <center>
-    <form method="POST" action="diff.php?dir=<?php echo $_GET["dir"] ?>" class="form-horizontal">
+    <form method="GET" class="form-horizontal">
     <fieldset>
     <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
         <div class="form-group">
@@ -50,14 +27,27 @@ else
                 <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="dir">Directories:</label>
+            <div class="col-md-4">
+            <select id="dir" name="dir" class="form-control">
+                <option value="1">base, boot</option> 
+                <option value="2" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '2'){echo("selected");}?>>dll</option>
+                <option value="3" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '3'){echo("selected");}?>>media, subsystems, win32ss</option>
+                <option value="100" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '100'){echo("selected");}?>>All ReactOS Source dir</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
     </fieldset>
     </form>
     </center>
     <br/>
 
     <?php
-    if (isset($_POST["lang"]) && !empty($_POST["lang"]))
+    if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_numeric($_GET["dir"]))
     {
         // Switch for directories
         switch ($_GET["dir"])
@@ -106,6 +96,7 @@ else
                 $it = new AppendIterator();
                 $it->append(new RecursiveIteratorIterator( $directory1 ));
                 break;
+
             default:
                 echo "Something is wrong! Please try again.";
                 exit;
@@ -151,17 +142,17 @@ else
                 throw new ErrorException($message, 0, $severity, $filename, $lineno);
             }
         }
-        
+
         set_error_handler('exceptions_error_handler');
-        
+
         $regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
 
         $missing = $allStrings = 0;
 
-        $lang = htmlspecialchars($_POST["lang"]);
+        $lang = htmlspecialchars($_GET["lang"]);
         // Search for eg. PL,Pl,pl
         $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
-        
+
         // ReactOS and Wine Strings - array
         $ignoredROSStrings = file($ROSSpellFilename, FILE_IGNORE_NEW_LINES);
         $ignoredWineStrings = file($wineSpellFilename, FILE_IGNORE_NEW_LINES);
@@ -189,7 +180,7 @@ else
                     if ($array['diff'])
                     {
                         echo $regex->getPathInfo() .'<br><br>';
-                        
+
                         $currentMissing = $missing;
 
                         foreach ($array['leftVersion'] as $index => $english)
@@ -223,12 +214,11 @@ else
         }
         echo "<h3>All strings for english: $allStrings</h3>";
         echo "<h3>Missing translations for your language ($lang): $missing</h3>";
-        
+
         // Rounded percent
         $percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
         echo "<h3>Language $lang translated in $percent%</h3>";
     }
-}
 
 include_once('footer.php');
 ?>
