@@ -102,9 +102,8 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             exit;
     }
 
-    function diff_versions($leftContent, $rightContent)
+    public function diff_versions($leftContent, $rightContent)
     {
-        $diff = true;
         $leftVersion = $rightVersion = null;
 
         // FIXME: Search multi-line with ""some text""
@@ -131,7 +130,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
         );
     }
 
-    function exceptions_error_handler($severity, $message, $filename, $lineno)
+    public function exceptions_error_handler($severity, $message, $filename, $lineno)
     {
         if (error_reporting() == 0)
         {
