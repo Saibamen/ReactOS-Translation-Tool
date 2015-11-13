@@ -102,7 +102,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             exit;
     }
 
-    public function diff_versions($leftContent, $rightContent)
+    function diff_versions($leftContent, $rightContent)
     {
         $leftVersion = $rightVersion = null;
 
