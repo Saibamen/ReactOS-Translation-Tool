@@ -130,7 +130,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
         );
     }
 
-    public function exceptions_error_handler($severity, $message, $filename, $lineno)
+    function exceptions_error_handler($severity, $message, $filename, $lineno)
     {
         if (error_reporting() == 0)
         {
