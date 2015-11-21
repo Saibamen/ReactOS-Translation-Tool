@@ -9,7 +9,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]))
 <head>
     <meta charset="utf-8">
     <title>ReactOS Translation Tool</title>
-    <link rel="shortcut icon" href="https://reactos.org/sites/all/themes/zen_reactos/favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
