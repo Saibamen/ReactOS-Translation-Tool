@@ -93,4 +93,3 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]))
 }
 
 include_once('footer.php');
-?>

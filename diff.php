@@ -220,4 +220,3 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
 }
 
 include_once('footer.php');
-?>
