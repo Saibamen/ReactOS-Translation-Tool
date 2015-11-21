@@ -104,7 +104,6 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
 
     function diff_versions($leftContent, $rightContent)
     {
-        $diff = true;
         $leftVersion = $rightVersion = null;
 
         // FIXME: Search multi-line with ""some text""
@@ -221,4 +220,3 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
 }
 
 include_once('footer.php');
-?>
