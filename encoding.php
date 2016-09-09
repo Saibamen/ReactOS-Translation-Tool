@@ -18,33 +18,33 @@ require_once('config.php');
 ?>
 
 <center>
-<form method="GET" class="form-horizontal">
-<fieldset>
-<legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="lang">Language code:</label>
-        <div class="col-md-4">
-            <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="dir">Directories:</label>
-        <div class="col-md-4">
-        <select id="dir" name="dir" class="form-control">
-            <option value="1">base, boot</option> 
-            <option value="2" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '2'){echo("selected");}?>>dll</option>
-            <option value="3" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '3'){echo("selected");}?>>media, subsystems, win32ss</option>
-            <option value="100" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '100'){echo("selected");}?>>All ReactOS Source dir</option>
-        </select>
-        </div>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
-</fieldset>
-</form>
+    <form method="GET" class="form-horizontal">
+        <fieldset>
+            <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="lang">Language code:</label>
+                <div class="col-md-4">
+                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="dir">Directories:</label>
+                <div class="col-md-4">
+                <select id="dir" name="dir" class="form-control">
+                    <option value="1">base, boot</option>
+                    <option value="2" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '2'){echo("selected");}?>>dll</option>
+                    <option value="3" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '3'){echo("selected");}?>>media, subsystems, win32ss</option>
+                    <option value="100" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '100'){echo("selected");}?>>All ReactOS Source dir</option>
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </fieldset>
+    </form>
 </center>
-<br/>
+<br>
 
 <?php
 if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_numeric($_GET["dir"]))
@@ -60,11 +60,11 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot/freeldr/fdebug");
 
             $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator( $directory1 ));
-            $it->append(new RecursiveIteratorIterator( $directory2 ));
-            $it->append(new RecursiveIteratorIterator( $directory3 ));
-            $it->append(new RecursiveIteratorIterator( $directory4 ));
-            $it->append(new RecursiveIteratorIterator( $directory5 ));
+            $it->append(new RecursiveIteratorIterator($directory1));
+            $it->append(new RecursiveIteratorIterator($directory2));
+            $it->append(new RecursiveIteratorIterator($directory3));
+            $it->append(new RecursiveIteratorIterator($directory4));
+            $it->append(new RecursiveIteratorIterator($directory5));
             break;
 
         case "2":
@@ -73,9 +73,9 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll/win32");
 
             $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator( $directory6 ));
-            $it->append(new RecursiveIteratorIterator( $directory7 ));
-            $it->append(new RecursiveIteratorIterator( $directory8 ));
+            $it->append(new RecursiveIteratorIterator($directory6));
+            $it->append(new RecursiveIteratorIterator($directory7));
+            $it->append(new RecursiveIteratorIterator($directory8));
             break;
 
         case "3":
@@ -84,17 +84,17 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss/user");
 
             $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator( $directory9 ));
-            $it->append(new RecursiveIteratorIterator( $directory10 ));
-            $it->append(new RecursiveIteratorIterator( $directory11 ));
+            $it->append(new RecursiveIteratorIterator($directory9));
+            $it->append(new RecursiveIteratorIterator($directory10));
+            $it->append(new RecursiveIteratorIterator($directory11));
             break;
 
         // Search in source dir - only for test
         case "100":
-            $directory1 = new RecursiveDirectoryIterator($ROSDir);
+            $directory = new RecursiveDirectoryIterator($ROSDir);
 
             $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator( $directory1 ));
+            $it->append(new RecursiveIteratorIterator($directory));
             break;
 
         default:
@@ -135,9 +135,8 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
                         echo 'Detected <b>UTF-8 BOM</b> in '. $file[0] .'<br>';
                         $allWrongEnc++;
                     }
-                }
+                } else
                 // Other encoding
-                else
                 {
                     echo 'Detected <b>other encoding</b> in '. $file[0] .'<br>';
                     $allWrongEnc++;

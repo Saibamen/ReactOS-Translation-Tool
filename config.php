@@ -2,6 +2,9 @@
 // ReactOS Source directory - must contain the base and dll directories
 $ROSDir = 'E:/ReactOS';
 
+// Test - run trough all folders in Missing files function
+$test = false;
+
 // If last character is not / - add it
 if (substr($ROSDir, -1) !== '/')
 {
