@@ -31,7 +31,7 @@ require_once('config.php');
         <label class="col-md-4 control-label" for="dir">Directories:</label>
         <div class="col-md-4">
         <select id="dir" name="dir" class="form-control">
-            <option value="1">base, boot</option> 
+            <option value="1">base, boot</option>
             <option value="2" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '2'){echo("selected");}?>>dll</option>
             <option value="3" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '3'){echo("selected");}?>>media, subsystems, win32ss</option>
             <option value="100" <?php if(isset($_GET["dir"]) && $_GET["dir"] == '100'){echo("selected");}?>>All ReactOS Source dir</option>
@@ -168,8 +168,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
             if (empty($isFile))
             {
                 echo '<b>No translation</b> for path '. $regex->getPathInfo() .'<hr>';
-            }
-            else
+            } else
             {
                 $fileContent1 = file_get_contents($regex->key());
                 $fileContent2 = file_get_contents($file[0]);
@@ -190,12 +189,11 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
                             // Check if this same and ignore some words
                             if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
                             {
-                                echo "<b>Missing translation:</b> ". htmlspecialchars($english) ."<br>";
+                            	echo "<b>Missing translation:</b> ". htmlspecialchars($english) ."<br>";
                                 $missing++;
                             }
                             $allStrings++;
-                        }
-                        catch (Exception $e)
+                        } catch (Exception $e)
                         {
                             echo "Missing stuff in your language<br>";
                             $allStrings++;
@@ -203,7 +201,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
                         }
                     }
                     if ($currentMissing == $missing)
-                            echo "Seems OK :) Some strings was ignored by ReactOS and Wine spell files.<br>";
+                    	echo "Seems OK :) Some strings was ignored by ReactOS and Wine spell files.<br>";
 
                     echo "<hr>";
                 }
