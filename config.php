@@ -5,11 +5,7 @@ $ROSDir = 'E:/ReactOS';
 // Test - run trough all folders in Missing files function
 $test = false;
 
-// If last character is not / - add it
-if (substr($ROSDir, -1) !== '/')
-{
-    $ROSDir .= '/';
-}
+$ROSDir = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $ROSDir);
 
 // Translations folder
 $langDir = 'lang';
@@ -33,4 +29,8 @@ if (!file_exists($ROSDir))
 {
     echo "ReactOS source path <b>$ROSDir</b> does not exist!";
     exit;
+}
+
+if (substr($ROSDir, -1) !== DIRECTORY_SEPARATOR) {
+	$ROSDir .= DIRECTORY_SEPARATOR;
 }
