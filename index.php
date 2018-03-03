@@ -5,13 +5,13 @@
  * AUTHOR URL:  http://it-maniak.pl/
  */
 
-include_once('header.php');
+include_once 'header.php';
 ?>
 
 <h1>Search missing RC files</h1>
 
 <div id="body">
-<?php require_once('config.php'); ?>
+<?php  require_once('config.php'); ?>
 
 <center>
     <form method="GET" class="form-horizontal">
@@ -20,7 +20,7 @@ include_once('header.php');
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lang">Language code:</label>
                 <div class="col-md-4">
-                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : "" ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : '' ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
@@ -30,25 +30,23 @@ include_once('header.php');
 <br>
 
 <?php
-if (isset($_GET["lang"]) && !empty($_GET["lang"]))
-{
+if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     $it = new AppendIterator();
 
-    if ($test === false)
-    {
-        $directory1 = new RecursiveDirectoryIterator($ROSDir. "base/applications");
-        $directory2 = new RecursiveDirectoryIterator($ROSDir. "base/setup");
-        $directory3 = new RecursiveDirectoryIterator($ROSDir. "base/shell");
-        $directory4 = new RecursiveDirectoryIterator($ROSDir. "base/system");
-        $directory5 = new RecursiveDirectoryIterator($ROSDir. "boot/freeldr/fdebug");
+    if ($test === false) {
+        $directory1 = new RecursiveDirectoryIterator($ROSDir.'base/applications');
+        $directory2 = new RecursiveDirectoryIterator($ROSDir.'base/setup');
+        $directory3 = new RecursiveDirectoryIterator($ROSDir.'base/shell');
+        $directory4 = new RecursiveDirectoryIterator($ROSDir.'base/system');
+        $directory5 = new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug');
 
-        $directory6 = new RecursiveDirectoryIterator($ROSDir. "dll/cpl");
-        $directory7 = new RecursiveDirectoryIterator($ROSDir. "dll/shellext");
-        $directory8 = new RecursiveDirectoryIterator($ROSDir. "dll/win32");
+        $directory6 = new RecursiveDirectoryIterator($ROSDir.'dll/cpl');
+        $directory7 = new RecursiveDirectoryIterator($ROSDir.'dll/shellext');
+        $directory8 = new RecursiveDirectoryIterator($ROSDir.'dll/win32');
 
-        $directory9 = new RecursiveDirectoryIterator($ROSDir. "media/themes");
-        $directory10 = new RecursiveDirectoryIterator($ROSDir. "subsystems/mvdm/ntvdm");
-        $directory11 = new RecursiveDirectoryIterator($ROSDir. "win32ss/user");
+        $directory9 = new RecursiveDirectoryIterator($ROSDir.'media/themes');
+        $directory10 = new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm');
+        $directory11 = new RecursiveDirectoryIterator($ROSDir.'win32ss/user');
 
         $it->append(new RecursiveIteratorIterator($directory1));
         $it->append(new RecursiveIteratorIterator($directory2));
@@ -61,32 +59,28 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]))
         $it->append(new RecursiveIteratorIterator($directory9));
         $it->append(new RecursiveIteratorIterator($directory10));
         $it->append(new RecursiveIteratorIterator($directory11));
-    } else
-    {
+    } else {
         // Search in source dir - only for test
         $directory = new RecursiveDirectoryIterator($ROSDir);
         $it->append(new RecursiveIteratorIterator($directory));
     }
 
-    $regex = new RegexIterator($it, '/^.+'. $langDir .'.+('. $originLang .')\.'. $fileExt .'$/i', RecursiveRegexIterator::GET_MATCH);
+    $regex = new RegexIterator($it, '/^.+'.$langDir.'.+('.$originLang.')\.'.$fileExt.'$/i', RecursiveRegexIterator::GET_MATCH);
 
     $allEnglish = $missingFiles = 0;
 
-    $lang = htmlspecialchars($_GET["lang"]);
+    $lang = htmlspecialchars($_GET['lang']);
     // Search for eg. PL,Pl,pl
-    $fileSearch = strtoupper($lang) .",". ucfirst($lang) .",". strtolower($lang);
+    $fileSearch = strtoupper($lang).','.ucfirst($lang).','.strtolower($lang);
 
     $regex->rewind();
-    while($regex->valid())
-    {
-        if (!$regex->isDot())
-        {
-            $file = glob($regex->getPathInfo() ."/*{". $fileSearch ."}*.". $fileExt, GLOB_BRACE);
+    while ($regex->valid()) {
+        if (!$regex->isDot()) {
+            $file = glob($regex->getPathInfo().'/*{'.$fileSearch.'}*.'.$fileExt, GLOB_BRACE);
 
             $isFile = array_filter($file);
-            if (empty($isFile))
-            {
-                echo '<b>No translation</b> for path '. $regex->getPathInfo() .'<br>';
+            if (empty($isFile)) {
+                echo '<b>No translation</b> for path '.$regex->getPathInfo().'<br>';
                 $missingFiles++;
             }
             $allEnglish++;
@@ -94,13 +88,12 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]))
         $regex->next();
     }
 
-    if ($missingFiles <= 0)
-    {
-        echo "<h3><b>No</b> missing file translations found for your language!</h3>";
+    if ($missingFiles <= 0) {
+        echo '<h3><b>No</b> missing file translations found for your language!</h3>';
     }
 
     echo "<h3>All translation RC files for english: $allEnglish</h3>";
     echo "<h3>Missing translations files for your language ($lang): $missingFiles</h3>";
 }
 
-include_once('footer.php');
+include_once 'footer.php';
