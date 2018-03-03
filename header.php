@@ -86,7 +86,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
 <body>
 <?php
     $start = microtime(true);
-    require_once('config.php');
+    require_once 'config.php';
 ?>
 
 <nav class="navbar navbar-default navbar-fixed-top">
