@@ -34,8 +34,7 @@ if (!file_exists($ROSDir))
 	if (strpos($uname, "linux") !== false)
 	{
 		echo "<br><br>For <b><u>Linux users</u></b>: make sure you have set the right permission rights for both the ReactOS source code directory and the tool directory.   Use <i>chmod</i> command and set their rights to 755 for both these directories if necessary. In any case you're using XAMPP for Linux, change the user and usergroup to yours. To do so read this: <a href = 'https://askubuntu.com/a/221593'>Change XAMPP's usergroup and username (link)</a>";
-	}
-	else if (strpos($uname, "win") !== false)
+	} elseif (strpos($uname, "win") !== false)
 	{
 		echo "<br><br>For <b><u>Windows users</u></b>: make sure the ReactOS source code path is <b>CORRECT</b> or that it is not <b>CORRUPT</b>";
 	}
