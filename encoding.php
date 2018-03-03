@@ -87,7 +87,6 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
             $it->append(new RecursiveIteratorIterator($directory11));
             break;
 
-        // Search in source dir - only for test
         case '100':
             $directory = new RecursiveDirectoryIterator($ROSDir);
 
