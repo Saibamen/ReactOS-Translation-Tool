@@ -98,6 +98,7 @@ cmd.exe
 control.exe
 fdebug
 http://www.reactos.org
+https://www.reactos.org
 lnk\0
 log\0
 netcfg.hlp\0

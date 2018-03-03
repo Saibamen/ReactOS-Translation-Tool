@@ -11,12 +11,6 @@ include_once 'header.php';
 <h1>Search missing translation strings</h1>
 
 <div id="body">
-
-<?php
-
- require_once('config.php');
-?>
-
 <center>
     <form method="GET" class="form-horizontal">
         <fieldset>

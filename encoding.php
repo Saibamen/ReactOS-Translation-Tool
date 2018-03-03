@@ -11,12 +11,6 @@ include_once 'header.php';
 <h1>Search for wrong encoded files</h1>
 
 <div id="body">
-
-<?php
-
- require_once('config.php');
-?>
-
 <center>
     <form method="GET" class="form-horizontal">
         <fieldset>
