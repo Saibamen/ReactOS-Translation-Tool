@@ -2,7 +2,7 @@
 /* PROJECT:     ReactOS Translation Tool
  * LICENSE:     GPL
  * AUTHORS:     Adam Stachowicz <saibamenppl@gmail.com>
- * AUTHOR URL:	http://it-maniak.pl/
+ * AUTHOR URL:  http://it-maniak.pl/
  */
 
 include_once('header.php');
@@ -189,7 +189,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
                             // Check if this same and ignore some words
                             if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings))
                             {
-                            	echo "<b>Missing translation:</b> ". htmlspecialchars($english) ."<br>";
+                                echo "<b>Missing translation:</b> ". htmlspecialchars($english) ."<br>";
                                 $missing++;
                             }
                             $allStrings++;
@@ -202,7 +202,7 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]) && isset($_GET["dir"]) && is_n
                     }
                     if ($currentMissing == $missing)
                     {
-                    	echo "Seems OK :) Some strings was ignored by ReactOS and Wine spell files.<br>";
+                        echo "Seems OK :) Some strings was ignored by ReactOS and Wine spell files.<br>";
                     }
 
                     echo "<hr>";

@@ -2,7 +2,7 @@
 /* PROJECT:     ReactOS Translation Tool
  * LICENSE:     GPL
  * AUTHORS:     Adam Stachowicz <saibamenppl@gmail.com>
- * AUTHOR URL:	http://it-maniak.pl/
+ * AUTHOR URL:  http://it-maniak.pl/
  */
 
 include_once('header.php');
