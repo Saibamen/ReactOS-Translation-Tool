@@ -2,7 +2,7 @@
 /* PROJECT:     ReactOS Translation Tool
  * LICENSE:     GPL
  * AUTHORS:     Adam Stachowicz <saibamenppl@gmail.com>
- * AUTHOR URL:	http://it-maniak.pl/
+ * AUTHOR URL:  http://it-maniak.pl/
  */
 include_once('header.php');
 ?>
@@ -92,8 +92,8 @@ if (isset($_GET["lang"]) && !empty($_GET["lang"]))
         }
         $regex->next();
     }
-    
-    if ($missingFiles == 0)
+
+    if ($missingFiles <= 0)
     {
         echo "<h3><b>No</b> missing file translations found for your language!</h3>";
     }
