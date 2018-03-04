@@ -1,3 +1,8 @@
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Saibamen/ReactOS-Translation-Tool/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Saibamen/ReactOS-Translation-Tool/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/db55366000de6f6ad999/maintainability)](https://codeclimate.com/github/Saibamen/ReactOS-Translation-Tool/maintainability)
+[![StyleCI](https://styleci.io/repos/39967290/shield)](https://styleci.io/repos/39967290)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/07387aac-72c8-460e-9aa8-d249c7a6a433/mini.png)](https://insight.sensiolabs.com/projects/07387aac-72c8-460e-9aa8-d249c7a6a433)
+
 # ReactOS Translation Tool
 Translation Tool for ReactOS
 
