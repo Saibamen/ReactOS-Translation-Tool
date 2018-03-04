@@ -58,7 +58,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                 new RecursiveDirectoryIterator($ROSDir.'base/setup'),
                 new RecursiveDirectoryIterator($ROSDir.'base/shell'),
                 new RecursiveDirectoryIterator($ROSDir.'base/system'),
-                new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug')
+                new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug'),
             ];
             break;
 
@@ -66,7 +66,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
             $directories = [
                 new RecursiveDirectoryIterator($ROSDir.'dll/cpl'),
                 new RecursiveDirectoryIterator($ROSDir.'dll/shellext'),
-                new RecursiveDirectoryIterator($ROSDir.'dll/win32')
+                new RecursiveDirectoryIterator($ROSDir.'dll/win32'),
             ];
             break;
 
@@ -74,13 +74,13 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
             $directories = [
                 new RecursiveDirectoryIterator($ROSDir.'media/themes'),
                 new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm'),
-                new RecursiveDirectoryIterator($ROSDir.'win32ss/user')
+                new RecursiveDirectoryIterator($ROSDir.'win32ss/user'),
             ];
             break;
 
         case '100':
             $directories = [
-                new RecursiveDirectoryIterator($ROSDir)
+                new RecursiveDirectoryIterator($ROSDir),
             ];
             break;
 

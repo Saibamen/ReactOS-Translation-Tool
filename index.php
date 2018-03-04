@@ -43,12 +43,12 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
             new RecursiveDirectoryIterator($ROSDir.'dll/win32'),
             new RecursiveDirectoryIterator($ROSDir.'media/themes'),
             new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm'),
-            new RecursiveDirectoryIterator($ROSDir.'win32ss/user')
+            new RecursiveDirectoryIterator($ROSDir.'win32ss/user'),
         ];
     } else {
         // Search in source dir - only for test
         $directories = [
-            new RecursiveDirectoryIterator($ROSDir)
+            new RecursiveDirectoryIterator($ROSDir),
         ];
     }
 
