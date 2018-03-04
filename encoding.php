@@ -48,55 +48,49 @@ include_once 'header.php';
 
 <?php
 if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_numeric($_GET['dir'])) {
+    $it = new AppendIterator();
+
     // Switch for directories
     switch ($_GET['dir']) {
         case '1':
-            $directory1 = new RecursiveDirectoryIterator($ROSDir.'base/applications');
-            $directory2 = new RecursiveDirectoryIterator($ROSDir.'base/setup');
-            $directory3 = new RecursiveDirectoryIterator($ROSDir.'base/shell');
-            $directory4 = new RecursiveDirectoryIterator($ROSDir.'base/system');
-            $directory5 = new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug');
-
-            $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator($directory1));
-            $it->append(new RecursiveIteratorIterator($directory2));
-            $it->append(new RecursiveIteratorIterator($directory3));
-            $it->append(new RecursiveIteratorIterator($directory4));
-            $it->append(new RecursiveIteratorIterator($directory5));
+            $directories = [
+                new RecursiveDirectoryIterator($ROSDir.'base/applications'),
+                new RecursiveDirectoryIterator($ROSDir.'base/setup'),
+                new RecursiveDirectoryIterator($ROSDir.'base/shell'),
+                new RecursiveDirectoryIterator($ROSDir.'base/system'),
+                new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug')
+            ];
             break;
 
         case '2':
-            $directory6 = new RecursiveDirectoryIterator($ROSDir.'dll/cpl');
-            $directory7 = new RecursiveDirectoryIterator($ROSDir.'dll/shellext');
-            $directory8 = new RecursiveDirectoryIterator($ROSDir.'dll/win32');
-
-            $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator($directory6));
-            $it->append(new RecursiveIteratorIterator($directory7));
-            $it->append(new RecursiveIteratorIterator($directory8));
+            $directories = [
+                new RecursiveDirectoryIterator($ROSDir.'dll/cpl'),
+                new RecursiveDirectoryIterator($ROSDir.'dll/shellext'),
+                new RecursiveDirectoryIterator($ROSDir.'dll/win32')
+            ];
             break;
 
         case '3':
-            $directory9 = new RecursiveDirectoryIterator($ROSDir.'media/themes');
-            $directory10 = new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm');
-            $directory11 = new RecursiveDirectoryIterator($ROSDir.'win32ss/user');
-
-            $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator($directory9));
-            $it->append(new RecursiveIteratorIterator($directory10));
-            $it->append(new RecursiveIteratorIterator($directory11));
+            $directories = [
+                new RecursiveDirectoryIterator($ROSDir.'media/themes'),
+                new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm'),
+                new RecursiveDirectoryIterator($ROSDir.'win32ss/user')
+            ];
             break;
 
         case '100':
-            $directory = new RecursiveDirectoryIterator($ROSDir);
-
-            $it = new AppendIterator();
-            $it->append(new RecursiveIteratorIterator($directory));
+            $directories = [
+                new RecursiveDirectoryIterator($ROSDir)
+            ];
             break;
 
         default:
             echo 'Something is wrong! Please try again.';
             exit;
+    }
+
+    foreach ($directories as $directory) {
+        $it->append(new RecursiveIteratorIterator($directory));
     }
 
     $regex = new RegexIterator($it, '/^.+'.$langDir.'.+('.$originLang.')\.'.$fileExt.'$/i', RecursiveRegexIterator::GET_MATCH);

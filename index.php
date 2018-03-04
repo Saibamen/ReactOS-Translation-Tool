@@ -32,34 +32,27 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     $it = new AppendIterator();
 
     if ($test === false) {
-        $directory1 = new RecursiveDirectoryIterator($ROSDir.'base/applications');
-        $directory2 = new RecursiveDirectoryIterator($ROSDir.'base/setup');
-        $directory3 = new RecursiveDirectoryIterator($ROSDir.'base/shell');
-        $directory4 = new RecursiveDirectoryIterator($ROSDir.'base/system');
-        $directory5 = new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug');
-
-        $directory6 = new RecursiveDirectoryIterator($ROSDir.'dll/cpl');
-        $directory7 = new RecursiveDirectoryIterator($ROSDir.'dll/shellext');
-        $directory8 = new RecursiveDirectoryIterator($ROSDir.'dll/win32');
-
-        $directory9 = new RecursiveDirectoryIterator($ROSDir.'media/themes');
-        $directory10 = new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm');
-        $directory11 = new RecursiveDirectoryIterator($ROSDir.'win32ss/user');
-
-        $it->append(new RecursiveIteratorIterator($directory1));
-        $it->append(new RecursiveIteratorIterator($directory2));
-        $it->append(new RecursiveIteratorIterator($directory3));
-        $it->append(new RecursiveIteratorIterator($directory4));
-        $it->append(new RecursiveIteratorIterator($directory5));
-        $it->append(new RecursiveIteratorIterator($directory6));
-        $it->append(new RecursiveIteratorIterator($directory7));
-        $it->append(new RecursiveIteratorIterator($directory8));
-        $it->append(new RecursiveIteratorIterator($directory9));
-        $it->append(new RecursiveIteratorIterator($directory10));
-        $it->append(new RecursiveIteratorIterator($directory11));
+        $directories = [
+            new RecursiveDirectoryIterator($ROSDir.'base/applications'),
+            new RecursiveDirectoryIterator($ROSDir.'base/setup'),
+            new RecursiveDirectoryIterator($ROSDir.'base/shell'),
+            new RecursiveDirectoryIterator($ROSDir.'base/system'),
+            new RecursiveDirectoryIterator($ROSDir.'boot/freeldr/fdebug'),
+            new RecursiveDirectoryIterator($ROSDir.'dll/cpl'),
+            new RecursiveDirectoryIterator($ROSDir.'dll/shellext'),
+            new RecursiveDirectoryIterator($ROSDir.'dll/win32'),
+            new RecursiveDirectoryIterator($ROSDir.'media/themes'),
+            new RecursiveDirectoryIterator($ROSDir.'subsystems/mvdm/ntvdm'),
+            new RecursiveDirectoryIterator($ROSDir.'win32ss/user')
+        ];
     } else {
         // Search in source dir - only for test
-        $directory = new RecursiveDirectoryIterator($ROSDir);
+        $directories = [
+            new RecursiveDirectoryIterator($ROSDir)
+        ];
+    }
+
+    foreach ($directories as $directory) {
         $it->append(new RecursiveIteratorIterator($directory));
     }
 
