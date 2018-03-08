@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <?php
 /* PROJECT:     ReactOS Translation Tool
  * LICENSE:     GPL
@@ -10,21 +12,24 @@ include_once 'header.php';
 
 <h1>Search missing RC files</h1>
 
-<div id="body">
-<center>
-    <form method="GET" class="form-horizontal">
-        <fieldset>
-            <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="lang">Language code:</label>
-                <div class="col-md-4">
-                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : '' ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </fieldset>
-    </form>
-</center>
+<html>
+    <div id="body">
+        <center>
+            <form method="GET" class="form-horizontal">
+                <fieldset>
+                    <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="lang">Language code:</label>
+                        <div class="col-md-4">
+                            <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : '' ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </fieldset>
+            </form>
+        </center>
+    </div>
+</html>
 <br>
 
 <?php
