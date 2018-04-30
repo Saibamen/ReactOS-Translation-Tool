@@ -188,12 +188,15 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
         }
         $regex->next();
     }
+    
+    $languppercase = strtoupper($lang);
+    
     echo "<h3>All strings for english: $allStrings</h3>";
-    echo "<h3>Missing translations for your language ($lang): $missing</h3>";
+    echo "<h3>Missing translations for your language ($languppercase): $missing</h3>";
 
     // Rounded percent
     $percent = round((($allStrings - $missing) / $allStrings) * 100, 2);
-    echo "<h3>Language $lang translated in $percent%</h3>";
+    echo "<h3>Language $languppercase translated in $percent%</h3>";
 }
 
 include_once 'footer.php';
