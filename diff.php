@@ -97,7 +97,6 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
     {
         $leftVersion = $rightVersion = null;
 
-        // FIXME: Search multi-line with ""some text""
         $pattern = '/^(?!FONT|\\s*\\*|\\#\\include|\\s*\\ICON)[^"\\n]*"\\K(?!\\s*(?:"|\\n))([^"]+)/m';
 
         if (preg_match_all($pattern, $leftContent, $matches) <= 0) {
