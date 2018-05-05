@@ -8,7 +8,7 @@ Translation Tool for ReactOS
 
 Homepage: https://reactos.org/
 
-Started by Adam Stachowicz (saibamenppl@gmail.com, http://it-maniak.pl/)
+Author: [Adam Stachowicz](https://github.com/Saibamen) <saibamenppl@gmail.com> (http://it-maniak.pl/)
 
 Features
 ----------
