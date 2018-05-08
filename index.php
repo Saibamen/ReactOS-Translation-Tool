@@ -82,7 +82,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     if ($missingFiles <= 0) {
         echo '<h3><b>No</b> missing file translations found for your language!</h3>';
     }
-    
+
     $languppercase = strtoupper($lang);
 
     echo "<h3>All translation RC files for english: $allEnglish</h3>";
