@@ -26,6 +26,9 @@ $ROSSpellFilename = 'ReactOS.spell';
 // Ignored Wine strings list (from http://fgouget.free.fr/wine-po/generic.spell.ignore)
 $wineSpellFilename = 'Wine.spell';
 
+// Use HTML5 <details> tag to hide missing translation strings (need to click to expand list)
+$detailsTag = false;
+
 // Maximize the default PHP time limit to 60 seconds
 set_time_limit(60);
 

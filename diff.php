@@ -95,7 +95,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
 
     function diff_versions($leftContent, $rightContent)
     {
-        $leftVersion = $rightVersion = null;
+        $rightVersion = null;
 
         $pattern = '/^(?!FONT|\\s*\\*|\\#\\include|\\s*\\ICON)[^"\\n]*"\\K(?!\\s*(?:"|\\n))([^"]+)/m';
 
@@ -161,24 +161,30 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                     echo $regex->getPathInfo().'<br><br>';
 
                     $currentMissing = $missing;
+                    $missingTextMessage = null;
 
                     foreach ($array['leftVersion'] as $index => $english) {
                         // Catch offset error
                         try {
                             // Check if this same and ignore some words
                             if ($english === $array['rightVersion'][$index] && !in_array($english, $ignoredROSStrings) && !in_array($english, $ignoredWineStrings)) {
-                                echo '<b>Missing translation:</b> '.htmlspecialchars($english).'<br>';
+                                $missingTextMessage .= '<b>Missing translation:</b> '.htmlspecialchars($english).'<br>';
                                 $missing++;
                             }
                             $allStrings++;
                         } catch (Exception $e) {
-                            echo 'Missing stuff in your language<br>';
+                            $missingTextMessage .= 'Missing stuff in your language<br>';
                             $allStrings++;
                             $missing++;
                         }
                     }
+
                     if ($currentMissing == $missing) {
                         echo 'Seems <b>OK :)</b> Some strings was ignored by ReactOS and Wine spell files.<br>';
+                    } elseif ($detailsTag) {
+                        echo '<details><summary><strong>Click here to see missing translations in file</strong></summary>'. $missingTextMessage .'</details>';
+                    } else {
+                        echo $missingTextMessage;
                     }
 
                     echo '<hr>';
