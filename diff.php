@@ -182,7 +182,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                     if ($currentMissing == $missing) {
                         echo 'Seems <b>OK :)</b> Some strings was ignored by ReactOS and Wine spell files.<br>';
                     } elseif ($detailsTag) {
-                        echo '<details><summary><strong>Click here to see missing translations in file</strong></summary>'.$missingTextMessage.'</details>';
+                        echo '<details open><summary><strong>Click here to see/hide missing translations in file</strong></summary>'.$missingTextMessage.'</details>';
                     } else {
                         echo $missingTextMessage;
                     }
