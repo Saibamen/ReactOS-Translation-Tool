@@ -66,16 +66,6 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
         padding:10px;
     }
 
-    a {
-        color:#444;
-        text-decoration:none;
-    }
-
-    a:hover {
-        color:#4b7bc0;
-        text-decoration:none;
-    }
-
     .contt {
         border:1px solid #D0D0D0;
         box-shadow:0 0 8px #D0D0D0;
