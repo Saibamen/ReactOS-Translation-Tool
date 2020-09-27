@@ -180,13 +180,14 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                     if ($currentMissing == $missing) {
                         $messageForFile = 'Seems <b>OK :)</b> Some strings was ignored by ReactOS and Wine spell files.<br>';
                     } elseif ($detailsTag) {
-                        $messageForFile = '<details open><summary><strong>Click here to see/hide missing translations in file</strong></summary>'.$missingTextMessage.'</details>';
+                        $messageForFile = '<details open><summary><strong>Click here to see/hide missing translations in file ('.($missing - $currentMissing).')</strong></summary>'.$missingTextMessage.'</details>';
                     } else {
                         $messageForFile = $missingTextMessage;
                     }
 
                     if ($currentMissing != $missing || $showTranslationOK) {
-                        echo $regex->getPathInfo().'<br><br>'.$messageForFile.'<hr>';
+                        $pathFromRoot = str_replace($ROSDir, '', $regex->getPathInfo());
+                        echo $regex->getPathInfo().' (<a href="https://github.com/reactos/reactos/tree/master/'.$pathFromRoot.'">Go to GitHub</a>)<br><br>'.$messageForFile.'<hr>';
                     }
                 }
             }

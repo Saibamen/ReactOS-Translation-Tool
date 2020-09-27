@@ -71,7 +71,8 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
 
             $isFile = array_filter($file);
             if (empty($isFile)) {
-                echo '<b>No translation</b> for path '.$regex->getPathInfo().'<br>';
+                $pathFromRoot = str_replace($ROSDir, '', $regex->getPathInfo());
+                echo '<b>No translation</b> for path '.$regex->getPathInfo().' <a href="https://github.com/reactos/reactos/tree/master/'.$pathFromRoot.'"><strong>Go to GitHub</strong></a><br>';
                 $missingFiles++;
             }
             $allEnglish++;
