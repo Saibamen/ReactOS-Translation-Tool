@@ -29,6 +29,9 @@ $wineSpellFilename = 'Wine.spell';
 // Use HTML5 <details> tag to show/hide missing translation strings (need to click to expand list)
 $detailsTag = true;
 
+// Print info about fully translated file
+$showTranslationOK = false;
+
 // Maximize the default PHP time limit to 60 seconds
 set_time_limit(60);
 

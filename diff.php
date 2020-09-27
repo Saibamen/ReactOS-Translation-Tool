@@ -158,8 +158,6 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                 $array = diff_versions($fileContent1, $fileContent2);
 
                 if ($array['diff']) {
-                    echo $regex->getPathInfo().'<br><br>';
-
                     $currentMissing = $missing;
                     $missingTextMessage = null;
 
@@ -180,14 +178,16 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
                     }
 
                     if ($currentMissing == $missing) {
-                        echo 'Seems <b>OK :)</b> Some strings was ignored by ReactOS and Wine spell files.<br>';
+                        $messageForFile = 'Seems <b>OK :)</b> Some strings was ignored by ReactOS and Wine spell files.<br>';
                     } elseif ($detailsTag) {
-                        echo '<details open><summary><strong>Click here to see/hide missing translations in file</strong></summary>'.$missingTextMessage.'</details>';
+                        $messageForFile = '<details open><summary><strong>Click here to see/hide missing translations in file</strong></summary>'.$missingTextMessage.'</details>';
                     } else {
-                        echo $missingTextMessage;
+                        $messageForFile = $missingTextMessage;
                     }
 
-                    echo '<hr>';
+                    if ($currentMissing != $missing || $showTranslationOK) {
+                        echo $regex->getPathInfo().'<br><br>'.$messageForFile.'<hr>';
+                    }
                 }
             }
         }
