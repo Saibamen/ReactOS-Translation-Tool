@@ -81,6 +81,10 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
         box-shadow:0 0 8px #D0D0D0;
         margin-top:65px;
     }
+
+    summary {
+        cursor: pointer;
+    }
     </style>
 </head>
 <body>
