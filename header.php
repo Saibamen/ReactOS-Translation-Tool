@@ -73,8 +73,8 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     }
 
     summary {
-        display: list-item;
-        cursor: pointer;
+        display:list-item;
+        cursor:pointer;
     }
     </style>
 </head>
