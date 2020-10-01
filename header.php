@@ -11,6 +11,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery-3.5.1.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
 
@@ -84,25 +85,20 @@ if (isset($_GET['lang']) && !empty($_GET['lang'])) {
     require_once 'config.php';
 ?>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.php">ReactOS Translation Tool</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="index.php">Missing files</a></li>
-                <li><a href="diff.php">Missing strings (Beta)</a></li>
-                <li><a href="encoding.php">Check encoding</a></li>
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-fixed-top navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.php">ReactOS Translation Tool</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="index.php">Missing files</a></li>
+                <li class="nav-item"><a class="nav-link" href="diff.php">Missing strings (Beta)</a></li>
+                <li class="nav-item"><a class="nav-link" href="encoding.php">Check encoding</a></li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
 
 <div class="container contt theme-showcase" role="main">
