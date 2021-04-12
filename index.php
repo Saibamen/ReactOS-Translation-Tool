@@ -15,7 +15,7 @@ include_once 'langcodes.php';
 <center>
     <form method="GET" class="form-horizontal">
         <fieldset>
-            <legend>Please choose your language code from the list below. </legend>
+            <legend>Please choose your language from the list below. </legend>
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lang">Language:</label>
                 <div class="col-md-4">
