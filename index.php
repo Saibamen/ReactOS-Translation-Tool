@@ -21,10 +21,7 @@ include_once 'langcodes.php';
                 <div class="col-md-4">
                     <select id="lang" name="lang" class="form-control">
                         <option value="" selected disabled hidden>Choose here</option>
-                        <?php foreach($langcodes as $language)
-                        {
-                            echo"<option value='$language[0]'>$language[1]</option>";
-                        }?>
+                        <?php foreach ($langcodes as $language) {echo"<option value='$language[0]'>$language[1]</option>";}?>
                     </select>
                 </div>
             </div>
