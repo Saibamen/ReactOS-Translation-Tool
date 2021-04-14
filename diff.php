@@ -97,7 +97,7 @@ if (isset($_GET['lang']) && !empty($_GET['lang']) && isset($_GET['dir']) && is_n
     {
         $rightVersion = null;
 
-        $pattern = '/^(?!FONT|\\s*\\*|\\#\\include|\\s*\\ICON)[^"\\n]*"\\K(?!\\s*(?:"|\\n))([^"]+)/m';
+        $pattern = '/^(?!FONT|\\s*\\*|\\#include|\\s*ICON)[^"\\n]*"\\K(?!\\s*(?:"|\\n))([^"]+)/m';
 
         if (preg_match_all($pattern, $leftContent, $matches) <= 0) {
             throw new Exception('Left content has no version line.');
