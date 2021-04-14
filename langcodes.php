@@ -5,6 +5,7 @@
  */
 
 // Data taken from: https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes
+// Last updated: 13.04.2021
 
 $langcodes = [
     'Afar'              => ['aa', 'Afaraf'],

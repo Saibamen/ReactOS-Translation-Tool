@@ -19,11 +19,12 @@ include_once 'langcodes.php';
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lang">Language:</label>
                 <div class="col-md-4">
-                    <select id="lang" name="lang" class="form-control">
-                        <option value="" selected disabled hidden>Choose here</option>
+                    <select id="lang" name="lang" class="form-control" required="required">
                         <?php foreach ($langcodes as $language) {
-    echo"<option value='$language[0]'>$language[1]</option>";
-}?>
+                        echo"<option value='$language[0]'";
+                        if(isset($_SESSION['lang'])&& ($language[0]== $_SESSION['lang'])) echo "selected";
+                        echo"> $language[1]</option>";
+                        }?>
                     </select>
                 </div>
             </div>
