@@ -6,6 +6,7 @@
  */
 
 include_once 'header.php';
+include_once 'langcodes.php';
 ?>
 
 <h1>Search for wrong encoded files</h1>
@@ -14,11 +15,17 @@ include_once 'header.php';
 <center>
     <form method="GET" class="form-horizontal">
         <fieldset>
-            <legend>Please type your <a href="https://beta.wikiversity.org/wiki/List_of_ISO_639-1_codes">language code in ISO 639-1</a>. For example: pl for Polish, de for German</legend>
+            <legend>Please choose your language and the directories, where you want to search for untranslated strings, from the lists below.</legend>
             <div class="form-group">
-                <label class="col-md-4 control-label" for="lang">Language code:</label>
+                <label class="col-md-4 control-label" for="lang">Language:</label>
                 <div class="col-md-4">
-                    <input type="text" value="<?php echo isset($_SESSION['lang']) ? $_SESSION['lang'] : '' ?>" id="lang" name="lang" class="form-control input-md" required="required" autofocus="autofocus" pattern="[A-Za-z]{2}" title="Two letter language code"/>
+                    <select id="lang" name="lang" class="form-control" required="required">
+                        <?php foreach ($langcodes as $language) {
+                        echo '<option value="'.$language[0].'" ';
+                        if (isset($_SESSION['lang']) && $language[0] == $_SESSION['lang']) echo 'selected';
+                        echo '> $language[1]</option>';
+                        }?>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
