@@ -27,7 +27,8 @@ include_once 'langcodes.php';
                                 echo 'selected';
                             }
                             echo '>'.$language[1].'</option>';
-                        }?>
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
